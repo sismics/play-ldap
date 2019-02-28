@@ -1,0 +1,7 @@
+self: play -> ldap 1.0.0
+
+require:
+    - play
+    - org.apache.directory.api -> api-all 1.0.2
+    - org.mockito -> mockito-core 2.24.0
+    - com.google.guava -> guava 23.5-jre
