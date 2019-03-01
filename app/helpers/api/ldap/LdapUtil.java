@@ -22,6 +22,7 @@ public class LdapUtil {
         config.setLdapPort(getLdapPort());
         config.setName(getLdapAdminDn());
         config.setCredentials(getLdapAdminPassword());
+        config.setTimeout(getLdapTimeout());
 
         DefaultLdapConnectionFactory factory = new DefaultLdapConnectionFactory(config);
         GenericObjectPool.Config poolConfig = new GenericObjectPool.Config();
@@ -48,6 +49,10 @@ public class LdapUtil {
 
     private static String getLdapAdminPassword() {
         return Play.configuration.getProperty("ldap.adminPassword");
+    }
+
+    private static Long getLdapTimeout() {
+        return Long.valueOf(Play.configuration.getProperty("ldap.timeout", "10000"));
     }
 
     public static String getLdapBaseDn() {
