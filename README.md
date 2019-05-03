@@ -10,7 +10,7 @@ This plugin adds [ldap](https://en.wikipedia.org/wiki/Lightweight_Directory_Acce
 
 ```
 require:
-    - ldap -> ldap 1.3.0
+    - ldap -> ldap 1.4.0
 
 repositories:
     - sismicsNexusRaw:

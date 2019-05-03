@@ -1,4 +1,6 @@
 ## Change Log
+### Version 1.4.0 (2019-05-03)
+- Automate release
 ### Version 1.3.0 (2019-04-10)
 - Automate release
 ### Version 1.2.0 (2019-03-11)

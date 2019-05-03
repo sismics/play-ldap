@@ -19,11 +19,17 @@ public class Ldap extends Controller {
 
     @Before()
     public static void checkLdapConnection() {
-        LdapConnection ldapConnection = (LdapConnection) Http.Request.current.get().args.get("ldapConnection");
+        Http.Request request = Http.Request.current.get();
+        LdapConnection ldapConnection = null;
+        if (request != null) {
+            ldapConnection = (LdapConnection) request.args.get("ldapConnection");
+        }
         if (ldapConnection == null) {
             try {
                 ldapConnection = LdapApi.get().getPool().getConnection();
-                Http.Request.current.get().args.put("ldapConnection", ldapConnection);
+                if (request != null) {
+                    request.args.put("ldapConnection", ldapConnection);
+                }
             } catch (LdapException e) {
                 Logger.error(e, "Error getting Ldap connection");
                 error(e.getMessage());

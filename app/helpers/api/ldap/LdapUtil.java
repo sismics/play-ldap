@@ -2,7 +2,10 @@ package helpers.api.ldap;
 
 import controllers.ldap.Ldap;
 import org.apache.commons.pool.impl.GenericObjectPool;
-import org.apache.directory.ldap.client.api.*;
+import org.apache.directory.ldap.client.api.DefaultLdapConnectionFactory;
+import org.apache.directory.ldap.client.api.LdapConnectionConfig;
+import org.apache.directory.ldap.client.api.LdapConnectionPool;
+import org.apache.directory.ldap.client.api.ValidatingPoolableLdapConnectionFactory;
 import play.Logger;
 import play.Play;
 
@@ -61,14 +64,17 @@ public class LdapUtil {
     }
 
     public static void withLdapConnection(Runnable r) {
-        LdapConnection ldapConnection = null;
         try {
             Ldap.checkLdapConnection();
             r.run();
         } catch (Exception e) {
             Logger.error(e, "Exception in LDAP runner");
         } finally {
-            Ldap.withLdapFinally();
+            try {
+                Ldap.withLdapFinally();
+            } catch (Exception e) {
+                // NOP
+            }
         }
     }
 }
