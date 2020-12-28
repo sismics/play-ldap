@@ -1,3 +1,6 @@
+[![GitHub release](https://img.shields.io/github/release/sismics/play-ldap.svg?style=flat-square)](https://github.com/sismics/play-ldap/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # play-ldap plugin
 
 This plugin adds [ldap](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol) support to Play! Framework 1 applications.
@@ -10,7 +13,7 @@ This plugin adds [ldap](https://en.wikipedia.org/wiki/Lightweight_Directory_Acce
 
 ```
 require:
-    - ldap -> ldap 1.4.0
+    - ldap -> ldap 1.5.0
 
 repositories:
     - sismicsNexusRaw:
